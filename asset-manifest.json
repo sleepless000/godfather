@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/godfather/static/css/main.55241f86.chunk.css",
+    "main.js": "/godfather/static/js/main.9c06712e.chunk.js",
+    "main.js.map": "/godfather/static/js/main.9c06712e.chunk.js.map",
+    "runtime~main.js": "/godfather/static/js/runtime~main.f5326f04.js",
+    "runtime~main.js.map": "/godfather/static/js/runtime~main.f5326f04.js.map",
+    "static/js/2.70bc83ec.chunk.js": "/godfather/static/js/2.70bc83ec.chunk.js",
+    "static/js/2.70bc83ec.chunk.js.map": "/godfather/static/js/2.70bc83ec.chunk.js.map",
+    "index.html": "/godfather/index.html",
+    "precache-manifest.eedcf55c6f0f4d7b82c04ac4b550126b.js": "/godfather/precache-manifest.eedcf55c6f0f4d7b82c04ac4b550126b.js",
+    "service-worker.js": "/godfather/service-worker.js",
+    "static/css/main.55241f86.chunk.css.map": "/godfather/static/css/main.55241f86.chunk.css.map",
+    "static/media/the-godfather.svg": "/godfather/static/media/the-godfather.94072296.svg"
+  }
+}
