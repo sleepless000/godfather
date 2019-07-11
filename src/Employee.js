@@ -30,7 +30,7 @@ const Bio = styled.p`
 `;
 
 export default function Employee(props) {
-  const path = `/_images/Profile/${props.image}`;
+  const path = `${process.env.PUBLIC_URL}/_images/Profile/${props.image}`;
   return (
     <>
       <Grid>
