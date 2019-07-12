@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import UserContext from './Provider';
 
@@ -38,16 +38,12 @@ const Bio = styled.h5`
 
 export default function Employee(props) {
   const path = `${process.env.PUBLIC_URL}/_images/Profile/${props.image}`;
-  const { setValue } = useContext(UserContext);
-  const [pop, setPop] = useState(props.popularity);
+  const { changeData } = useContext(UserContext);
 
   function handleChange(e) {
-    setPop(e.target.value);
+    changeData(e)(props.name);
   }
 
-  useEffect(() => {
-    setValue(pop);
-  });
   return (
     <>
       <Grid>
@@ -60,7 +56,7 @@ export default function Employee(props) {
               type="range"
               min="1"
               max="10"
-              value={pop}
+              value={props.popularity}
               onChange={handleChange}
               style={{ width: '100%' }}
             />

@@ -1,7 +1,6 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled, { css } from 'styled-components';
-import UserContext from './Provider';
 
 const TabLink = styled(NavLink)`
   text-decoration: none;
@@ -19,15 +18,8 @@ const TabLink = styled(NavLink)`
 `;
 
 export default function(props) {
-  const { value } = useContext(UserContext);
-  const [pop, setPop] = useState(props.popularity);
-
-  useEffect(() => {
-    setPop(value);
-  }, [value]);
-
   return (
-    <TabLink to={props.name.replace(/ /g, '')} value={pop}>
+    <TabLink to={props.name.replace(/ /g, '')} value={props.popularity}>
       {props.name}
     </TabLink>
   );

@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import routes from './Router';
 import styled from 'styled-components';
 import logo from './_logo/the-godfather.svg';
 import Links from './Links';
-import { UserProvider } from './Provider';
+import UserContext from './Provider';
+import Employee from './Employee';
 
 const Grid = styled.div`
   height: 100vh;
@@ -34,19 +34,24 @@ const Logo = styled.img`
 `;
 
 function App() {
-  const [value, setValue] = useState();
+  const { data } = useContext(UserContext);
   return (
-    <UserProvider value={{ value, setValue }}>
-      <Router>
-        <Grid>
-          <LeftGrid>
-            <Logo src={logo} />
-            <List>
-              <Links />
-            </List>
-          </LeftGrid>
-          <RightGrid>
-            {routes.map((route, index) => (
+    <Router>
+      <Grid>
+        <LeftGrid>
+          <Logo src={logo} />
+          <List>
+            <Links />
+          </List>
+        </LeftGrid>
+        <RightGrid>
+          {/* dynamic routes from the data */}
+          {data
+            .map(employee => ({
+              path: '/' + employee.name.replace(/ /g, ''),
+              main: () => <Employee {...employee} />
+            }))
+            .map((route, index) => (
               <Route
                 key={index}
                 path={route.path}
@@ -54,10 +59,9 @@ function App() {
                 component={route.main}
               />
             ))}
-          </RightGrid>
-        </Grid>
-      </Router>
-    </UserProvider>
+        </RightGrid>
+      </Grid>
+    </Router>
   );
 }
 

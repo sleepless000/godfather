@@ -1,9 +1,11 @@
-import React from 'react';
-import data from './EmployeeData.json';
+import React, { useContext } from 'react';
+// import data from './EmployeeData.json';
 import TabLink from './TabLink';
+import UserContext from './Provider';
 
 export default function() {
-  return data.employees.map((employee, index) => {
+  const { data } = useContext(UserContext);
+  return data.map((employee, index) => {
     return (
       <li key={index}>
         <TabLink {...employee} />
