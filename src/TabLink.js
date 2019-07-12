@@ -10,6 +10,9 @@ const TabLink = styled(NavLink)`
   width: 100%;
   display: block;
 
+  &:hover {
+    color: SkyBlue;
+  }
   ${({ value }) =>
     value &&
     css`
@@ -17,10 +20,11 @@ const TabLink = styled(NavLink)`
     `}
 `;
 
-export default function(props) {
+export default function({ name, popularity }) {
+  const path = name.replace(/ /g, '');
   return (
-    <TabLink to={props.name.replace(/ /g, '')} value={props.popularity}>
-      {props.name}
+    <TabLink to={path} value={popularity}>
+      {name}
     </TabLink>
   );
 }

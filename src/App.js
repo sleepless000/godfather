@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import styled from 'styled-components';
 import logo from './_logo/the-godfather.svg';
 import Links from './Links';
-import UserContext from './Provider';
+import { UserContext } from './Provider';
 import Employee from './Employee';
 
 const Grid = styled.div`
@@ -20,7 +20,11 @@ const LeftGrid = styled.div`
   gap: 20px;
   background: rgba(0, 0, 0, 0.4);
 `;
-const RightGrid = styled.div``;
+const RightGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 5fr 5%;
+  grid-gap: 2em;
+`;
 
 const List = styled.div`
   padding-top: 5em;
@@ -34,7 +38,24 @@ const Logo = styled.img`
 `;
 
 function App() {
-  const { data } = useContext(UserContext);
+  const { data, changeData } = useContext(UserContext);
+
+  const renderRoutes = () => {
+    return data
+      .map(employee => ({
+        path: '/' + employee.name.replace(/ /g, ''),
+        main: () => <Employee {...employee} changeData={changeData} />
+      }))
+      .map((route, index) => (
+        <Route
+          key={index}
+          path={route.path}
+          exact={route.exact}
+          component={route.main}
+        />
+      ));
+  };
+
   return (
     <Router>
       <Grid>
@@ -44,22 +65,7 @@ function App() {
             <Links />
           </List>
         </LeftGrid>
-        <RightGrid>
-          {/* dynamic routes from the data */}
-          {data
-            .map(employee => ({
-              path: '/' + employee.name.replace(/ /g, ''),
-              main: () => <Employee {...employee} />
-            }))
-            .map((route, index) => (
-              <Route
-                key={index}
-                path={route.path}
-                exact={route.exact}
-                component={route.main}
-              />
-            ))}
-        </RightGrid>
+        <RightGrid>{renderRoutes()}</RightGrid>
       </Grid>
     </Router>
   );

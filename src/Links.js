@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
-// import data from './EmployeeData.json';
 import TabLink from './TabLink';
-import UserContext from './Provider';
+import { UserContext } from './Provider';
 
 export default function() {
   const { data } = useContext(UserContext);
