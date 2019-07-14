@@ -1,16 +1,16 @@
-import React, { useContext } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import styled from 'styled-components';
-import logo from './_logo/the-godfather.svg';
 import Links from './Links';
-import { UserContext } from './Context';
-import Employee from './Employee';
+import Routes from './Routes';
+import logo from './_logo/the-godfather.svg';
 
 const BackgroundImage = styled.div`
   background: url(/_images/Header/header.jpg) no-repeat 0px -150px fixed;
   background-size: cover;
   overflow: hidden;
 `;
+
 const Cover = styled.div`
   position: absolute;
   top: 250px;
@@ -36,6 +36,7 @@ const LeftGrid = styled.div`
   background: rgba(0, 0, 0, 0.4);
   z-index: 1;
 `;
+
 const RightGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 5fr 0.1fr;
@@ -55,21 +56,6 @@ const Logo = styled.img`
 `;
 
 export default function() {
-  const { data, changePopularity } = useContext(UserContext);
-
-  const renderRoutes = () => {
-    return data
-      .map(employee => ({
-        path: `/${employee.name.replace(/ /g, '')}`,
-        component: () => (
-          <Employee {...employee} changePopularity={changePopularity} />
-        )
-      }))
-      .map((route, index) => (
-        <Route key={index} path={route.path} component={route.component} />
-      ));
-  };
-
   return (
     <Router>
       <BackgroundImage>
@@ -81,7 +67,9 @@ export default function() {
               <Links />
             </List>
           </LeftGrid>
-          <RightGrid>{renderRoutes()}</RightGrid>
+          <RightGrid>
+            <Routes />
+          </RightGrid>
         </Grid>
       </BackgroundImage>
     </Router>

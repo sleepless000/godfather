@@ -8,6 +8,7 @@ const Image = styled.img`
   border: 2px grey solid;
   border-radius: 3px;
 `;
+
 const Info = styled.div`
   margin-top: 12rem;
   letter-spacing: 1px;
@@ -18,10 +19,16 @@ const Title = styled.div`
   font-size: 2.2rem;
   margin-bottom: 1rem;
 `;
+
 const Popularity = styled.div`
   display: grid;
   grid-template-columns: 150px auto;
   margin-bottom: 1.5rem;
+`;
+
+const SubTitle = styled.h2`
+  font-family: 'Roboto Regular';
+  font-size: 1.2rem;
 `;
 
 const Slider = styled.input`
@@ -29,18 +36,15 @@ const Slider = styled.input`
   cursor: pointer;
 `;
 
-const SubTitle = styled.h2`
-  font-size: 1.2rem;
+const Bio = styled.h5`
+  font-family: 'Roboto Regular';
+  padding: 1em;
+  background: rgba(0, 0, 0, 0.4);
 `;
 
 const Paragraph = styled.p`
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   margin-bottom: 0.3rem;
-`;
-
-const Bio = styled.h5`
-  padding: 1em;
-  background: rgba(0, 0, 0, 0.4);
 `;
 
 export default function(props) {
