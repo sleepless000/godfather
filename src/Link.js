@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
-const TabLink = styled(NavLink)`
+const Link = styled(NavLink)`
   text-decoration: none;
   color: white;
   text-transform: uppercase;
@@ -29,13 +29,8 @@ export default function({ name, popularity, color, setName }) {
   const handleClick = () => setName(name);
 
   return (
-    <TabLink
-      to={path}
-      popularity={popularity}
-      onClick={handleClick}
-      color={color}
-    >
+    <Link to={path} popularity={popularity} onClick={handleClick} color={color}>
       {name}
-    </TabLink>
+    </Link>
   );
 }

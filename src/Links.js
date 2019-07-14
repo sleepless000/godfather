@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import TabLink from './TabLink';
+import Link from './Link';
 import { UserContext } from './Context';
 
 export default function() {
@@ -7,7 +7,7 @@ export default function() {
   const [colleagues, setColleagues] = useState([]);
   const [name, setName] = useState('');
 
-  const handleOnClick = name => {
+  const handleSetName = name => {
     setName(name);
     data.map(employee =>
       employee.name === name ? setColleagues(employee.colleagues) : null
@@ -17,11 +17,11 @@ export default function() {
   return data.map((employee, index) => {
     return colleagues.includes(employee.name) || name === employee.name ? (
       <li key={index}>
-        <TabLink {...employee} color="true" setName={handleOnClick} />
+        <Link {...employee} color="true" setName={handleSetName} />
       </li>
     ) : (
       <li key={index}>
-        <TabLink {...employee} setName={handleOnClick} />
+        <Link {...employee} setName={handleSetName} />
       </li>
     );
   });
