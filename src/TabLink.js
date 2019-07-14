@@ -6,34 +6,33 @@ const TabLink = styled(NavLink)`
   text-decoration: none;
   color: white;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 0.15rem;
   width: 100%;
   display: block;
 
   &:hover {
-    /* color: SkyBlue; */
-    background: rgba(0, 0, 0, 0.4);
+    background: rgb(220, 224, 230, 0.3);
     width: 100%;
   }
-  ${({ value }) =>
-    value &&
+
+  ${({ popularity }) =>
+    popularity &&
     css`
-      font-size: calc(${value} * 0.2em);
+      font-size: calc(${popularity} * 0.2rem);
     `}
-  ${({ color }) =>
-    color &&
-    css`
-      color: SkyBlue;
-    `}
+
+  ${({ color }) => color && 'color: SkyBlue;'}
 `;
 
-export default function({ name, popularity, color, onClick }) {
+export default function({ name, popularity, color, setName }) {
   const path = name.replace(/ /g, '');
+  const handleClick = () => setName(name);
+
   return (
     <TabLink
       to={path}
-      value={popularity}
-      onClick={() => onClick(name)}
+      popularity={popularity}
+      onClick={handleClick}
       color={color}
     >
       {name}

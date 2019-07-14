@@ -2,23 +2,26 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Image = styled.img`
-  height: 200px;
-  margin-top: 70%;
-  margin-left: 10%;
-  border: 1px white solid;
+  height: 125px;
+  margin-top: 12rem;
+  margin-left: 4rem;
+  border: 2px grey solid;
+  border-radius: 3px;
 `;
 const Info = styled.div`
-  padding-top: 25%;
+  margin-top: 12rem;
   letter-spacing: 1px;
   color: white;
 `;
 
 const Title = styled.div`
-  font-size: 2em;
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
 `;
 const Popularity = styled.div`
   display: grid;
   grid-template-columns: 150px auto;
+  margin-bottom: 1.5rem;
 `;
 
 const Slider = styled.input`
@@ -26,25 +29,26 @@ const Slider = styled.input`
   cursor: pointer;
 `;
 
-const SubTitle = styled.h2``;
+const SubTitle = styled.h2`
+  font-size: 1.2rem;
+`;
+
 const Paragraph = styled.p`
-  font-size: 1.5em;
+  font-size: 1.5rem;
+  margin-bottom: 0.3rem;
 `;
 
 const Bio = styled.h5`
   padding: 1em;
   background: rgba(0, 0, 0, 0.4);
-  display: grid;
-  justify-content: center;
-  align-items: center;
 `;
 
-export default function Employee(props) {
-  const { image, name, popularity, biography, changeData } = props;
+export default function(props) {
+  const { image, name, popularity, biography, changePopularity } = props;
   const path = `${process.env.PUBLIC_URL}/_images/Profile/${image}`;
 
   function handleChange(e) {
-    changeData(+e.target.value)(name);
+    changePopularity(+e.target.value)(name);
   }
 
   return (
