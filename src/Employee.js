@@ -48,12 +48,10 @@ const Paragraph = styled.p`
 `;
 
 export default function(props) {
-  const { image, name, popularity, biography, changePopularity } = props;
+  const { image, name, popularity, biography, setPopularity } = props;
   const path = `${process.env.PUBLIC_URL}/_images/Profile/${image}`;
 
-  function handleChange(e) {
-    changePopularity(+e.target.value)(name);
-  }
+  const handleChange = e => setPopularity(Number(e.target.value), name);
 
   return (
     <>
