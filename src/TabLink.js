@@ -11,19 +11,31 @@ const TabLink = styled(NavLink)`
   display: block;
 
   &:hover {
-    color: SkyBlue;
+    /* color: SkyBlue; */
+    background: rgba(0, 0, 0, 0.4);
+    width: 100%;
   }
   ${({ value }) =>
     value &&
     css`
       font-size: calc(${value} * 0.2em);
     `}
+  ${({ color }) =>
+    color &&
+    css`
+      color: SkyBlue;
+    `}
 `;
 
-export default function({ name, popularity }) {
+export default function({ name, popularity, color, onClick }) {
   const path = name.replace(/ /g, '');
   return (
-    <TabLink to={path} value={popularity}>
+    <TabLink
+      to={path}
+      value={popularity}
+      onClick={() => onClick(name)}
+      color={color}
+    >
       {name}
     </TabLink>
   );

@@ -9,7 +9,7 @@ import Employee from './Employee';
 const Grid = styled.div`
   height: 100vh;
   display: grid;
-  grid-template-columns: 30% 70%;
+  grid-template-columns: 25% 75%;
 `;
 
 const LeftGrid = styled.div`

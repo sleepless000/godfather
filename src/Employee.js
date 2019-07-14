@@ -21,13 +21,18 @@ const Popularity = styled.div`
   grid-template-columns: 150px auto;
 `;
 
+const Slider = styled.input`
+  width: 100%;
+  cursor: pointer;
+`;
+
 const SubTitle = styled.h2``;
 const Paragraph = styled.p`
   font-size: 1.5em;
 `;
 
 const Bio = styled.h5`
-  padding: 2em;
+  padding: 1em;
   background: rgba(0, 0, 0, 0.4);
   display: grid;
   justify-content: center;
@@ -48,18 +53,18 @@ export default function Employee(props) {
       <Info>
         <Title>{name}</Title>
         <Popularity>
-          <SubTitle>Popularity:</SubTitle>
-          <input
+          <SubTitle>Popularity</SubTitle>
+          <Slider
             type="range"
             min="1"
             max="10"
-            value={popularity}
-            onChange={handleChange}
-            style={{ width: '100%' }}
+            step="0.01"
+            defaultValue={popularity}
+            onMouseUp={handleChange}
           />
         </Popularity>
         <Bio>
-          <Paragraph>Biography:</Paragraph>
+          <Paragraph>Biography</Paragraph>
           {biography}
         </Bio>
       </Info>
